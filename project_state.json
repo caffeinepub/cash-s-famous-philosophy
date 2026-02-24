@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A fun philosophy app showcasing 'Cash's Famous Philosophy' — a collection of humorous, nonsensical, and surprisingly thought-provoking quotes and observations, such as 'If an orange is called an orange, why is an apple not called a red?' and 'Your tongue knows what everything tastes like.'",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- A quirky hand-drawn style banner illustration featuring abstract swirling thought bubbles, question marks, fruits (orange and apple), and a tongue, rendered in warm amber and cream tones on a deep brown background (philosophy-banner.dim_1200x300.png)",
+  "existing_features": [
+    {
+      "id": "feature-build-a-browsable-frontend-that-displays-cash-s-philosophy-quotes-fetched-from-the-backend-each-quote-should-be-presented-as-its-own-card-or-panel-users-can-scroll-or-navigate-through-the-collection",
+      "title": "Build a browsable frontend that displays Cash's philosophy quotes fetched from the backend. Each quote should be presented as its own card or panel. Users can scroll or navigate through the collection.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-bold-irreverent-visual-theme-think-late-night-diner-meets-philosophical-manifesto-use-warm-earthy-tones-amber-cream-deep-brown-with-chunky-serif-or-slab-typography-hand-drawn-style-accents-and-a-slightly-chaotic-but-charming-layout-that-matches-the-absurdist-humor-of-the-quotes-enforce-this-style-consistently-across-all-pages-and-components",
+      "title": "Apply a bold, irreverent visual theme — think late-night diner meets philosophical manifesto. Use warm, earthy tones (amber, cream, deep brown) with chunky serif or slab typography, hand-drawn-style accents, and a slightly chaotic but charming layout that matches the absurdist humor of the quotes. Enforce this style consistently across all pages and components.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Display a collection of Cash's famous philosophy quotes in a fun, browsable UI",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Include iconic example quotes like 'If an orange is called an orange, why is an apple not called a red?' and 'Your tongue knows what everything tastes like.'",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Store a collection of Cash's philosophy quotes in the backend. Seed it with at least these two quotes: 'If an orange is called an orange, why is an apple not called a red?' and 'Your tongue knows what everything tastes like.' Support querying all quotes.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Cash's Famous Philosophy",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

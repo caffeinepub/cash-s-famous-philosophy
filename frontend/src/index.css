@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Caveat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.375rem;
+
+        /* Warm earthy palette */
+        --background: 0.18 0.03 55;
+        --foreground: 0.95 0.04 85;
+
+        --card: 0.22 0.04 50;
+        --card-foreground: 0.95 0.04 85;
+
+        --popover: 0.22 0.04 50;
+        --popover-foreground: 0.95 0.04 85;
+
+        --primary: 0.72 0.14 65;
+        --primary-foreground: 0.15 0.03 50;
+
+        --secondary: 0.28 0.05 55;
+        --secondary-foreground: 0.90 0.04 80;
+
+        --muted: 0.25 0.04 52;
+        --muted-foreground: 0.65 0.06 70;
+
+        --accent: 0.78 0.16 72;
+        --accent-foreground: 0.15 0.03 50;
+
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+
+        --border: 0.32 0.06 55;
+        --input: 0.28 0.05 55;
+        --ring: 0.72 0.14 65;
+
+        --chart-1: 0.72 0.14 65;
+        --chart-2: 0.65 0.12 72;
+        --chart-3: 0.58 0.10 60;
+        --chart-4: 0.80 0.18 80;
+        --chart-5: 0.50 0.08 55;
+
+        --sidebar: 0.20 0.04 52;
+        --sidebar-foreground: 0.95 0.04 85;
+        --sidebar-primary: 0.72 0.14 65;
+        --sidebar-primary-foreground: 0.15 0.03 50;
+        --sidebar-accent: 0.28 0.05 55;
+        --sidebar-accent-foreground: 0.90 0.04 80;
+        --sidebar-border: 0.32 0.06 55;
+        --sidebar-ring: 0.72 0.14 65;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Zilla Slab', Georgia, serif;
+    }
+}
+
+@layer utilities {
+    .font-handwritten {
+        font-family: 'Caveat', cursive;
+    }
+
+    .font-slab {
+        font-family: 'Zilla Slab', Georgia, serif;
+    }
+
+    .card-wobble-1 { transform: rotate(-1.2deg); }
+    .card-wobble-2 { transform: rotate(0.8deg); }
+    .card-wobble-3 { transform: rotate(-0.5deg); }
+    .card-wobble-4 { transform: rotate(1.5deg); }
+    .card-wobble-5 { transform: rotate(-0.9deg); }
+
+    .card-wobble-1:hover,
+    .card-wobble-2:hover,
+    .card-wobble-3:hover,
+    .card-wobble-4:hover,
+    .card-wobble-5:hover {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    .text-shadow-warm {
+        text-shadow: 2px 2px 8px oklch(0.12 0.03 50 / 0.6);
+    }
+
+    .glow-amber {
+        box-shadow: 0 0 30px oklch(0.72 0.14 65 / 0.15), 0 4px 20px oklch(0.12 0.03 50 / 0.4);
+    }
+
+    .border-dashed-warm {
+        border: 2px dashed oklch(0.72 0.14 65 / 0.4);
+    }
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Cash's Famous Philosophy App - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Display Cash's philosophy quotes in a browsable card-based layout",
+      "acceptanceCriteria": [
+        "All quotes from the backend are displayed on screen.",
+        "Each quote is visually distinct in its own card or panel.",
+        "The layout is scrollable or paginated when there are many quotes.",
+        "The two example quotes appear in the collection."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/QuoteCard.tsx",
+          "operation": "create",
+          "description": "Create a QuoteCard component that displays a single philosophy quote in a card format. Style it with warm earthy tones (amber, cream, deep brown), chunky serif typography, and hand-drawn-style accents to match the irreverent diner aesthetic. Each card should be visually distinct and charming."
+        },
+        {
+          "path": "frontend/src/pages/QuotesPage.tsx",
+          "operation": "create",
+          "description": "Create a QuotesPage that fetches all quotes from the backend using the getQuotes() method and displays them in a scrollable grid or list of QuoteCard components. Include the generated banner image frontend/public/assets/generated/philosophy-banner.dim_1200x300.png at the top of the page as a hero section. Ensure the layout is responsive and scrollable."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the QuotesPage into the main App component as the default route. Remove any placeholder content and ensure QuotesPage is rendered on the root path."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Apply bold, irreverent visual theme with warm tones and expressive typography",
+      "acceptanceCriteria": [
+        "Color palette uses warm earthy tones (amber, cream, deep brown) with no blue or purple.",
+        "Typography uses a bold serif or slab font that feels expressive.",
+        "Visual style is consistent across the entire app.",
+        "The design complements the humorous, absurdist tone of the quotes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles to enforce the warm, earthy color palette (amber #D4A574, cream #F5E6D3, deep brown #3E2723). Import and apply a bold serif or slab font (e.g., Zilla Slab, Rockwell, or similar from Google Fonts). Set background to deep brown and default text to cream. Add hand-drawn-style accents using border styles or decorative elements."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom color palette (amber, cream, deepBrown) and font family for the bold serif/slab typography. Configure these as the primary theme colors to ensure consistency across all components."
+        }
+      ]
+    }
+  ]
+}

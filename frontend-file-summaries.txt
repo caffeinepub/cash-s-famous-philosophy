@@ -1,0 +1,9 @@
+{
+  "frontend/src/index.css": "Global styles with warm earthy OKLCH color palette (espresso brown, amber, cream), imports Zilla Slab and Caveat fonts, and defines utility classes for card wobble animations, text shadows, and amber glow effects.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Zilla Slab/Caveat font families, warm earthy color aliases (amber, cream, espresso), custom box shadows, and fade-in-up/wiggle keyframe animations.",
+  "frontend/src/hooks/useQueries.ts": "React Query hook `useGetQuotes` that fetches all philosophy quotes from the backend actor via `getQuotes()`.",
+  "frontend/src/components/QuoteCard.tsx": "Individual quote card component with rotating wobble transforms, decorative quotation marks, accent symbols, numbered badges, and animated fade-in-up entrance.",
+  "frontend/src/components/QuoteCardSkeleton.tsx": "Loading skeleton placeholder for quote cards, matching the card layout with muted skeleton blocks.",
+  "frontend/src/pages/QuotesPage.tsx": "Main page displaying the philosophy banner image, styled header, and a responsive 2-column grid of QuoteCard components fetched from the backend, with loading/error/empty states.",
+  "frontend/src/App.tsx": "Root app component rendering QuotesPage and a styled footer with dynamic year, love icon, and caffeine.ai attribution link with UTM tracking."
+}
