@@ -1,10 +1,11 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
-  "summary": "Quotes app with backend connectivity issue. User confirmed adding two new quotes: 'If teachers teach, why don't doctors doct?' and 'If time flies, where does it land?' User also requested adding 'If you wait faster, are you technically arriving sooner?'",
+  "projectStateVersion": 9,
+  "summary": "Quotes app with backend deployment issue. Recently added quotes ('If teachers teach, why don't doctors doct?', 'If time flies, where does it land?', and 'If you wait faster, are you technically arriving sooner?') disappear after deployment even though they show up locally. Need to audit backend main.mo and ensure all quotes persist after publishing.",
   "architectural_notes": [],
   "known_issues": [
-    "App cannot reach the server on both mobile and desktop — quotes fail to load with an immediate connection error on all platforms."
+    "App cannot reach the server on both mobile and desktop — quotes fail to load with an immediate connection error on all platforms.",
+    "Recently added quotes disappear after deployment (production) even though they are visible in the local/development version — latest main.mo changes may not be picked up during the build/deploy process."
   ],
   "isFixRequest": true,
   "existing_features": [],
@@ -50,6 +51,14 @@
       "summary": "Add the quote 'If you wait faster, are you technically arriving sooner?' to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`.",
       "reqIds": [
         "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Audit `backend/main.mo` and ensure all five quotes are hardcoded in the `getQuotes` query: the original quotes plus 'If teachers teach, why don't doctors doct?', 'If time flies, where does it land?', and 'If you wait faster, are you technically arriving sooner?'. Verify there are no stale or duplicate definitions that could cause older versions to override the latest list during deployment.",
+      "reqIds": [
+        "REQ-5"
       ],
       "status": "pending"
     }

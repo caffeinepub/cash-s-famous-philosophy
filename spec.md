@@ -1,9 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Add a new quote to the hardcoded quotes list in the backend.
+**Goal:** Fix the backend so all quotes persist correctly after deployment by ensuring they are properly hardcoded in `backend/main.mo`.
 
 **Planned changes:**
-- Add the quote "If you wait faster, are you technically arriving sooner?" to the quotes array in `backend/main.mo`'s `getQuotes` query.
+- Audit `backend/main.mo` and ensure the `getQuotes` query contains all quotes: the original quotes plus "If teachers teach, why don't doctors doct?", "If time flies, where does it land?", and "If you wait faster, are you technically arriving sooner?"
+- Remove any duplicate or conflicting quote list definitions in the backend actor that could cause older versions to override the latest list during deployment
 
-**User-visible outcome:** The new quote appears alongside all existing quotes when the application fetches quotes from the backend.
+**User-visible outcome:** After deployment, all quotes (including the three recently added ones) are visible and none disappear.

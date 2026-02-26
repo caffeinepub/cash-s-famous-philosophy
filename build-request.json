@@ -1,34 +1,41 @@
 {
   "kind": "build_request",
-  "title": "Add new quote to backend",
-  "priority": "normal",
+  "title": "Fix backend quotes persistence after deployment",
+  "projectName": "Cash's Famous Philosophy",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-4",
-      "text": "Add the quote 'If you wait faster, are you technically arriving sooner?' to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`.",
+      "id": "REQ-5",
+      "text": "Audit `backend/main.mo` and ensure all five quotes are hardcoded in the `getQuotes` query: the original quotes plus 'If teachers teach, why don't doctors doct?', 'If time flies, where does it land?', and 'If you wait faster, are you technically arriving sooner?'. Verify there are no stale or duplicate definitions that could cause older versions to override the latest list during deployment.",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-recent"
+          "msg-12",
+          "msg-14",
+          "msg-16"
         ],
         "quotes": [
-          "Now add \"If you wait faster, are you technically arriving sooner?\""
+          "The two most recently added quotes are disappearing after deployment",
+          "If teachers teach, why don't doctors doct?",
+          "If time flies, where does it land?",
+          "If you wait faster, are you technically arriving sooner?"
         ]
       },
       "acceptanceCriteria": [
-        "The quote 'If you wait faster, are you technically arriving sooner?' appears in the array returned by the `getQuotes` query.",
-        "All previously existing quotes remain present and unchanged.",
-        "The backend compiles and deploys without errors."
+        "All quotes including all three recently added ones are present in the hardcoded list in `backend/main.mo`",
+        "No duplicate or conflicting quote list definitions exist in the backend actor",
+        "After deployment to production, `getQuotes` returns all quotes (none disappear)"
       ]
     }
   ],
   "constraints": [
-    "Do not remove or modify any existing quotes.",
-    "Only modify backend/main.mo."
+    "Do not remove or alter any existing quotes",
+    "All quote data must remain hardcoded in the backend actor — no external database"
   ],
   "nonGoals": [
-    "Frontend changes.",
-    "Adding any other new quotes beyond the one specified."
+    "Adding new quotes beyond the three specified",
+    "Changes to frontend quote display or styling",
+    "Authentication or Internet Identity changes"
   ],
   "imageRequirements": {
     "required": [],

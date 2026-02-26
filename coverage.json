@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-26T14:13:12.601Z",
+  "generatedAt": "2026-02-26T15:54:42.514Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,8 +11,8 @@
     "implemented": 0,
     "items": [
       {
-        "id": "REQ-4",
-        "summary": "Add the quote 'If you wait faster, are you technically arriving sooner?' to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`.",
+        "id": "REQ-5",
+        "summary": "Audit `backend/main.mo` and ensure all five quotes are hardcoded in the `getQuotes` query: the original quotes plus 'If teachers teach, why don't doctors doct?', 'If time flies, where does it land?', and 'If you wait faster, are you technically arriving sooner?'. Verify there are no stale or duplicate definitions that could cause older versions to override the latest list during deployment.",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
@@ -20,7 +20,6 @@
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-implementation-plan.json",
