@@ -97,4 +97,19 @@
     .border-dashed-warm {
         border: 2px dashed oklch(0.72 0.14 65 / 0.4);
     }
+
+    /* Quote cycling transitions */
+    .quote-cycle {
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .quote-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .quote-hidden {
+        opacity: 0;
+        transform: translateY(12px);
+    }
 }

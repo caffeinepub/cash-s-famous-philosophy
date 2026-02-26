@@ -19,6 +19,7 @@ export const _CaffeineStorageRefillResult = IDL.Record({
   'success' : IDL.Opt(IDL.Bool),
   'topped_up_amount' : IDL.Opt(IDL.Nat),
 });
+export const Quote = IDL.Record({ 'text' : IDL.Text });
 
 export const idlService = IDL.Service({
   '_caffeineStorageBlobIsLive' : IDL.Func(
@@ -47,7 +48,7 @@ export const idlService = IDL.Service({
       [],
     ),
   '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
-  'getQuotes' : IDL.Func([], [IDL.Vec(IDL.Text)], ['query']),
+  'getQuotes' : IDL.Func([], [IDL.Vec(Quote)], ['query']),
 });
 
 export const idlInitArgs = [];
@@ -64,6 +65,7 @@ export const idlFactory = ({ IDL }) => {
     'success' : IDL.Opt(IDL.Bool),
     'topped_up_amount' : IDL.Opt(IDL.Nat),
   });
+  const Quote = IDL.Record({ 'text' : IDL.Text });
   
   return IDL.Service({
     '_caffeineStorageBlobIsLive' : IDL.Func(
@@ -92,7 +94,7 @@ export const idlFactory = ({ IDL }) => {
         [],
       ),
     '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
-    'getQuotes' : IDL.Func([], [IDL.Vec(IDL.Text)], ['query']),
+    'getQuotes' : IDL.Func([], [IDL.Vec(Quote)], ['query']),
   });
 };
 

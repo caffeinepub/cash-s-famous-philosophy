@@ -1,77 +1,59 @@
 {
   "kind": "build_request",
-  "title": "Cash's Famous Philosophy App",
-  "projectName": "Cash's Philosophy",
+  "title": "Auto-retry quote loading on mobile failure",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Store a collection of Cash's philosophy quotes in the backend. Seed it with at least these two quotes: 'If an orange is called an orange, why is an apple not called a red?' and 'Your tongue knows what everything tastes like.' Support querying all quotes.",
-      "target": "backend",
+      "text": "Update the `useGetQuotes` hook to automatically retry fetching quotes when the request fails, using React Query's retry configuration with multiple retry attempts and exponential backoff, so that intermittent mobile loading failures resolve without user intervention.",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-6"
         ],
         "quotes": [
-          "If an orange is called an orange, why is an apple not called a red?",
-          "Your tongue knows what everything tastes like."
+          "Keep retrying"
         ]
       },
       "acceptanceCriteria": [
-        "Backend stores at least the two example quotes.",
-        "A query function returns the full list of quotes.",
-        "Data persists across canister upgrades."
+        "When the initial quote fetch fails, the hook automatically retries at least 3 times before giving up",
+        "Retries use a backoff strategy (e.g., increasing delay between attempts)",
+        "The loading/skeleton state remains visible during retry attempts rather than showing the error screen",
+        "The 'wisdom got lost in thought' error screen is only shown after all retries are exhausted",
+        "On mobile, if quotes fail on first load but succeed on a subsequent retry, quotes display normally without user interaction"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Build a browsable frontend that displays Cash's philosophy quotes fetched from the backend. Each quote should be presented as its own card or panel. Users can scroll or navigate through the collection.",
+      "text": "In `QuotesPage.tsx`, when an error occurs while retrying, keep showing the loading skeleton state instead of immediately switching to the error UI, so the user on mobile sees a loading experience rather than an error screen during transient failures.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-6"
         ],
         "quotes": [
-          "Create an app for Cash's famous philosophy."
+          "Keep retrying",
+          "Mobile"
         ]
       },
       "acceptanceCriteria": [
-        "All quotes from the backend are displayed on screen.",
-        "Each quote is visually distinct in its own card or panel.",
-        "The layout is scrollable or paginated when there are many quotes.",
-        "The two example quotes appear in the collection."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Apply a bold, irreverent visual theme — think late-night diner meets philosophical manifesto. Use warm, earthy tones (amber, cream, deep brown) with chunky serif or slab typography, hand-drawn-style accents, and a slightly chaotic but charming layout that matches the absurdist humor of the quotes. Enforce this style consistently across all pages and components.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Color palette uses warm earthy tones (amber, cream, deep brown) with no blue or purple.",
-        "Typography uses a bold serif or slab font that feels expressive.",
-        "Visual style is consistent across the entire app.",
-        "The design complements the humorous, absurdist tone of the quotes."
+        "The skeleton loading UI is shown while retries are in progress",
+        "The error UI ('wisdom got lost in thought') is only displayed once all retry attempts have been exhausted",
+        "No regression on desktop — behavior remains the same for successful loads"
       ]
     }
   ],
   "constraints": [
-    "Do not add user authentication or login.",
-    "Do not allow users to submit their own quotes in this version."
+    "Do not modify frontend/src/hooks/useActor.ts or frontend/src/main.tsx",
+    "Do not change the backend quote data or API"
   ],
   "nonGoals": [
-    "User-generated quote submission.",
-    "Social sharing or voting on quotes.",
-    "Search or filtering of quotes."
+    "Fixing permanent/non-intermittent backend failures",
+    "Adding a manual retry button for users",
+    "Changing the visual design or quote cycling behavior"
   ],
   "imageRequirements": {
-    "required": [
-      "A quirky hand-drawn style banner illustration featuring abstract swirling thought bubbles, question marks, fruits (orange and apple), and a tongue, rendered in warm amber and cream tones on a deep brown background (philosophy-banner.dim_1200x300.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

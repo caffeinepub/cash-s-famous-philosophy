@@ -7,6 +7,9 @@ export interface None {
     __kind__: "None";
 }
 export type Option<T> = Some<T> | None;
+export interface Quote {
+    text: string;
+}
 export interface backendInterface {
-    getQuotes(): Promise<Array<string>>;
+    getQuotes(): Promise<Array<Quote>>;
 }

@@ -1,54 +1,39 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Cash's Famous Philosophy App - Frontend Implementation",
+  "title": "Auto-retry quote loading on mobile failure",
   "requirements": [
     {
-      "id": "REQ-2",
-      "summary": "Display Cash's philosophy quotes in a browsable card-based layout",
+      "id": "REQ-1",
+      "summary": "Configure automatic retry logic in the useGetQuotes hook with exponential backoff to handle intermittent mobile loading failures without user intervention",
       "acceptanceCriteria": [
-        "All quotes from the backend are displayed on screen.",
-        "Each quote is visually distinct in its own card or panel.",
-        "The layout is scrollable or paginated when there are many quotes.",
-        "The two example quotes appear in the collection."
+        "When the initial quote fetch fails, the hook automatically retries at least 3 times before giving up",
+        "Retries use a backoff strategy (e.g., increasing delay between attempts)",
+        "The loading/skeleton state remains visible during retry attempts rather than showing the error screen",
+        "The 'wisdom got lost in thought' error screen is only shown after all retries are exhausted",
+        "On mobile, if quotes fail on first load but succeed on a subsequent retry, quotes display normally without user interaction"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/QuoteCard.tsx",
-          "operation": "create",
-          "description": "Create a QuoteCard component that displays a single philosophy quote in a card format. Style it with warm earthy tones (amber, cream, deep brown), chunky serif typography, and hand-drawn-style accents to match the irreverent diner aesthetic. Each card should be visually distinct and charming."
-        },
-        {
-          "path": "frontend/src/pages/QuotesPage.tsx",
-          "operation": "create",
-          "description": "Create a QuotesPage that fetches all quotes from the backend using the getQuotes() method and displays them in a scrollable grid or list of QuoteCard components. Include the generated banner image frontend/public/assets/generated/philosophy-banner.dim_1200x300.png at the top of the page as a hero section. Ensure the layout is responsive and scrollable."
-        },
-        {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/hooks/useQueries.ts",
           "operation": "modify",
-          "description": "Wire the QuotesPage into the main App component as the default route. Remove any placeholder content and ensure QuotesPage is rendered on the root path."
+          "description": "Update the useGetQuotes hook to add React Query retry configuration with at least 3 retry attempts and exponential backoff delay (e.g., retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)). Configure retry to true or specify retry count (e.g., retry: 3). Ensure the hook continues to guard against null actor and properly returns isLoading status during retries."
         }
       ]
     },
     {
-      "id": "REQ-3",
-      "summary": "Apply bold, irreverent visual theme with warm tones and expressive typography",
+      "id": "REQ-2",
+      "summary": "Maintain skeleton loading UI during retry attempts in QuotesPage, only showing the error screen after all retries are exhausted",
       "acceptanceCriteria": [
-        "Color palette uses warm earthy tones (amber, cream, deep brown) with no blue or purple.",
-        "Typography uses a bold serif or slab font that feels expressive.",
-        "Visual style is consistent across the entire app.",
-        "The design complements the humorous, absurdist tone of the quotes."
+        "The skeleton loading UI is shown while retries are in progress",
+        "The error UI ('wisdom got lost in thought') is only displayed once all retry attempts have been exhausted",
+        "No regression on desktop — behavior remains the same for successful loads"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/pages/QuotesPage.tsx",
           "operation": "modify",
-          "description": "Update global styles to enforce the warm, earthy color palette (amber #D4A574, cream #F5E6D3, deep brown #3E2723). Import and apply a bold serif or slab font (e.g., Zilla Slab, Rockwell, or similar from Google Fonts). Set background to deep brown and default text to cream. Add hand-drawn-style accents using border styles or decorative elements."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend Tailwind theme with custom color palette (amber, cream, deepBrown) and font family for the bold serif/slab typography. Configure these as the primary theme colors to ensure consistency across all components."
+          "description": "Update the error handling logic to keep displaying the QuoteCardSkeleton components while isLoading is true (which remains true during React Query retry attempts). Only render the error UI ('wisdom got lost in thought') when isError is true AND isLoading is false, indicating all retry attempts have been exhausted. Ensure the loading skeleton array rendering continues during the retry phase without switching to error state prematurely."
         }
       ]
     }

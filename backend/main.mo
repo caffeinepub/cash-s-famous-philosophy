@@ -3,12 +3,17 @@ import MixinStorage "blob-storage/Mixin";
 actor {
   include MixinStorage();
 
-  let quotes = [
-    "If an orange is called an orange, why is an apple not called a red?",
-    "Your tongue knows what everything tastes like.",
+  type Quote = {
+    text : Text;
+  };
+
+  let quotes : [Quote] = [
+    { text = "If a fly has no wings, is it just a walk?" },
+    { text = "If teachers teach, why don't doctors doct?" },
+    { text = "If time flies, where does it land?" },
   ];
 
-  public query ({ caller }) func getQuotes() : async [Text] {
+  public query ({ caller }) func getQuotes() : async [Quote] {
     quotes;
   };
 };

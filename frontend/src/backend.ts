@@ -89,6 +89,9 @@ export class ExternalBlob {
         return this;
     }
 }
+export interface Quote {
+    text: string;
+}
 export interface _CaffeineStorageCreateCertificateResult {
     method: string;
     blob_hash: string;
@@ -107,7 +110,7 @@ export interface backendInterface {
     _caffeineStorageCreateCertificate(blobHash: string): Promise<_CaffeineStorageCreateCertificateResult>;
     _caffeineStorageRefillCashier(refillInformation: _CaffeineStorageRefillInformation | null): Promise<_CaffeineStorageRefillResult>;
     _caffeineStorageUpdateGatewayPrincipals(): Promise<void>;
-    getQuotes(): Promise<Array<string>>;
+    getQuotes(): Promise<Array<Quote>>;
 }
 import type { _CaffeineStorageRefillInformation as __CaffeineStorageRefillInformation, _CaffeineStorageRefillResult as __CaffeineStorageRefillResult } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
@@ -196,7 +199,7 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async getQuotes(): Promise<Array<string>> {
+    async getQuotes(): Promise<Array<Quote>> {
         if (this.processError) {
             try {
                 const result = await this.actor.getQuotes();

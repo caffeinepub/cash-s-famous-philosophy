@@ -1,53 +1,35 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "A fun philosophy app showcasing 'Cash's Famous Philosophy' — a collection of humorous, nonsensical, and surprisingly thought-provoking quotes and observations, such as 'If an orange is called an orange, why is an apple not called a red?' and 'Your tongue knows what everything tastes like.'",
-  "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- A quirky hand-drawn style banner illustration featuring abstract swirling thought bubbles, question marks, fruits (orange and apple), and a tongue, rendered in warm amber and cream tones on a deep brown background (philosophy-banner.dim_1200x300.png)",
+  "summary": "App that displays cycling quotes/wisdom. Working on fixing intermittent mobile loading issues with quotes.",
+  "architectural_notes": [
+    "Quotes/wisdom content should auto-retry on load failure instead of showing error state"
+  ],
+  "known_issues": [
+    "Intermittent quote loading failure on mobile showing 'wisdom got lost in thought' error"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-build-a-browsable-frontend-that-displays-cash-s-philosophy-quotes-fetched-from-the-backend-each-quote-should-be-presented-as-its-own-card-or-panel-users-can-scroll-or-navigate-through-the-collection",
-      "title": "Build a browsable frontend that displays Cash's philosophy quotes fetched from the backend. Each quote should be presented as its own card or panel. Users can scroll or navigate through the collection.",
+      "id": "feature-update-the-usegetquotes-hook-to-automatically-retry-fetching-quotes-when-the-request-fails-using-react-query-s-retry-configuration-with-multiple-retry-attempts-and-exponential-backoff-so-that-intermittent-mobile-loading-failures-resolve-without-user-intervention",
+      "title": "Update the `useGetQuotes` hook to automatically retry fetching quotes when the request fails, using React Query's retry configuration with multiple retry attempts and exponential backoff, so that intermittent mobile loading failures resolve without user intervention.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-quotespage-tsx-when-an-error-occurs-while-retrying-keep-showing-the-loading-skeleton-state-instead-of-immediately-switching-to-the-error-ui-so-the-user-on-mobile-sees-a-loading-experience-rather-than-an-error-screen-during-transient-failures",
+      "title": "In `QuotesPage.tsx`, when an error occurs while retrying, keep showing the loading skeleton state instead of immediately switching to the error UI, so the user on mobile sees a loading experience rather than an error screen during transient failures.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-apply-a-bold-irreverent-visual-theme-think-late-night-diner-meets-philosophical-manifesto-use-warm-earthy-tones-amber-cream-deep-brown-with-chunky-serif-or-slab-typography-hand-drawn-style-accents-and-a-slightly-chaotic-but-charming-layout-that-matches-the-absurdist-humor-of-the-quotes-enforce-this-style-consistently-across-all-pages-and-components",
-      "title": "Apply a bold, irreverent visual theme — think late-night diner meets philosophical manifesto. Use warm, earthy tones (amber, cream, deep brown) with chunky serif or slab typography, hand-drawn-style accents, and a slightly chaotic but charming layout that matches the absurdist humor of the quotes. Enforce this style consistently across all pages and components.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Display a collection of Cash's famous philosophy quotes in a fun, browsable UI",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Include iconic example quotes like 'If an orange is called an orange, why is an apple not called a red?' and 'Your tongue knows what everything tastes like.'",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Store a collection of Cash's philosophy quotes in the backend. Seed it with at least these two quotes: 'If an orange is called an orange, why is an apple not called a red?' and 'Your tongue knows what everything tastes like.' Support querying all quotes.",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "status": "pending"
-    }
-  ],
+  "new_feature_requests": [],
   "gameProjectType": "none",
-  "projectName": "Cash's Famous Philosophy",
+  "projectName": "Auto-retry quote loading on mobile failure",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

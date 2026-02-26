@@ -2,11 +2,28 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-build-a-browsable-frontend-that-displays-cash-s-philosophy-quotes-fetched-from-the-backend-each-quote-should-be-presented-as-its-own-card-or-panel-users-can-scroll-or-navigate-through-the-collection",
-      "featureTitle": "Build a browsable frontend that displays Cash's philosophy quotes fetched from the backend. Each quote should be presented as its own card or panel. Users can scroll or navigate through the collection.",
+      "featureId": "feature-update-the-usegetquotes-hook-to-automatically-retry-fetching-quotes-when-the-request-fails-using-react-query-s-retry-configuration-with-multiple-retry-attempts-and-exponential-backoff-so-that-intermittent-mobile-loading-failures-resolve-without-user-intervention",
+      "featureTitle": "Update the `useGetQuotes` hook to automatically retry fetching quotes when the request fails, using React Query's retry configuration with multiple retry attempts and exponential backoff, so that intermittent mobile loading failures resolve without user intervention.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/QuoteCard.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-in-quotespage-tsx-when-an-error-occurs-while-retrying-keep-showing-the-loading-skeleton-state-instead-of-immediately-switching-to-the-error-ui-so-the-user-on-mobile-sees-a-loading-experience-rather-than-an-error-screen-during-transient-failures",
+      "featureTitle": "In `QuotesPage.tsx`, when an error occurs while retrying, keep showing the loading skeleton state instead of immediately switching to the error UI, so the user on mobile sees a loading experience rather than an error screen during transient failures.",
+      "files": [
         "frontend/src/pages/QuotesPage.tsx"
       ],
       "components": [
@@ -19,26 +36,6 @@
       ],
       "testIds": [
         "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-apply-a-bold-irreverent-visual-theme-think-late-night-diner-meets-philosophical-manifesto-use-warm-earthy-tones-amber-cream-deep-brown-with-chunky-serif-or-slab-typography-hand-drawn-style-accents-and-a-slightly-chaotic-but-charming-layout-that-matches-the-absurdist-humor-of-the-quotes-enforce-this-style-consistently-across-all-pages-and-components",
-      "featureTitle": "Apply a bold, irreverent visual theme — think late-night diner meets philosophical manifesto. Use warm, earthy tones (amber, cream, deep brown) with chunky serif or slab typography, hand-drawn-style accents, and a slightly chaotic but charming layout that matches the absurdist humor of the quotes. Enforce this style consistently across all pages and components.",
-      "files": [
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
       ],
       "confidence": "high"
     }

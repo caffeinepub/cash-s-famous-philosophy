@@ -1,9 +1,10 @@
 {
-  "frontend/src/index.css": "Global styles with warm earthy OKLCH color palette (espresso brown, amber, cream), imports Zilla Slab and Caveat fonts, and defines utility classes for card wobble animations, text shadows, and amber glow effects.",
+  "frontend/src/index.css": "Global styles with warm earthy OKLCH color palette, Zilla Slab and Caveat font imports, utility classes for card wobble animations, text shadows, amber glow effects, and new `quote-cycle`/`quote-visible`/`quote-hidden` transition classes for the cycling quote display.",
   "frontend/tailwind.config.js": "Extended Tailwind config with Zilla Slab/Caveat font families, warm earthy color aliases (amber, cream, espresso), custom box shadows, and fade-in-up/wiggle keyframe animations.",
-  "frontend/src/hooks/useQueries.ts": "React Query hook `useGetQuotes` that fetches all philosophy quotes from the backend actor via `getQuotes()`.",
-  "frontend/src/components/QuoteCard.tsx": "Individual quote card component with rotating wobble transforms, decorative quotation marks, accent symbols, numbered badges, and animated fade-in-up entrance.",
-  "frontend/src/components/QuoteCardSkeleton.tsx": "Loading skeleton placeholder for quote cards, matching the card layout with muted skeleton blocks.",
-  "frontend/src/pages/QuotesPage.tsx": "Main page displaying the philosophy banner image, styled header, and a responsive 2-column grid of QuoteCard components fetched from the backend, with loading/error/empty states.",
-  "frontend/src/App.tsx": "Root app component rendering QuotesPage and a styled footer with dynamic year, love icon, and caffeine.ai attribution link with UTM tracking."
+  "frontend/src/hooks/useQueries.ts": "React Query hook `useGetQuotes` that fetches quotes from the backend actor, now configured with 3 retries and exponential backoff (doubling delay up to 30s) to handle intermittent mobile failures automatically.",
+  "frontend/src/components/QuoteCard.tsx": "Individual quote card component that accepts a `Quote` object (with a `text` field) and renders `quote.text`, with decorative quotation marks, accent symbols, numbered badges, and wobble transforms.",
+  "frontend/src/components/QuoteCardSkeleton.tsx": "Loading skeleton placeholder for quote cards using `bg-espresso-light` skeleton blocks and `border-amber-warm/40` border for theme-consistent visibility.",
+  "frontend/src/pages/QuotesPage.tsx": "Main quotes page that cycles through quotes every 4.5s with fade transitions; now shows the skeleton loading UI during both initial load and all retry attempts (`isPending || isFetching`), only revealing the error screen after all retries are exhausted (`isError && !isFetching`).",
+  "frontend/src/App.tsx": "Root app component that wraps `QuotesPage` in an `ErrorBoundary` so runtime errors show a fallback instead of a blank page, with the Footer always rendered outside the boundary.",
+  "frontend/src/components/ErrorBoundary.tsx": "React class-based error boundary that catches runtime render errors from child components and displays a warm earthy fallback UI with a \"try again\" button, preventing blank screens from uncaught exceptions."
 }

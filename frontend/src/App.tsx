@@ -1,5 +1,6 @@
 import React from 'react';
 import { QuotesPage } from './pages/QuotesPage';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 function Footer() {
     const year = new Date().getFullYear();
@@ -41,7 +42,9 @@ export default function App() {
     return (
         <div className="min-h-screen flex flex-col bg-background">
             <div className="flex-1">
-                <QuotesPage />
+                <ErrorBoundary>
+                    <QuotesPage />
+                </ErrorBoundary>
             </div>
             <Footer />
         </div>
