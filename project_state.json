@@ -1,35 +1,60 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "App that displays cycling quotes/wisdom. Working on fixing intermittent mobile loading issues with quotes.",
-  "architectural_notes": [
-    "Quotes/wisdom content should auto-retry on load failure instead of showing error state"
-  ],
+  "projectStateVersion": 7,
+  "summary": "Quotes app with backend connectivity issue. User confirmed adding two new quotes: 'If teachers teach, why don't doctors doct?' and 'If time flies, where does it land?' User also requested adding 'If you wait faster, are you technically arriving sooner?'",
+  "architectural_notes": [],
   "known_issues": [
-    "Intermittent quote loading failure on mobile showing 'wisdom got lost in thought' error"
+    "App cannot reach the server on both mobile and desktop — quotes fail to load with an immediate connection error on all platforms."
   ],
   "isFixRequest": true,
-  "existing_features": [
+  "existing_features": [],
+  "new_feature_requests": [
     {
-      "id": "feature-update-the-usegetquotes-hook-to-automatically-retry-fetching-quotes-when-the-request-fails-using-react-query-s-retry-configuration-with-multiple-retry-attempts-and-exponential-backoff-so-that-intermittent-mobile-loading-failures-resolve-without-user-intervention",
-      "title": "Update the `useGetQuotes` hook to automatically retry fetching quotes when the request fails, using React Query's retry configuration with multiple retry attempts and exponential backoff, so that intermittent mobile loading failures resolve without user intervention.",
+      "id": "AR-1",
+      "summary": "Audit and fix the backend actor canister configuration so that the frontend can successfully connect to it on both desktop and mobile. Verify that the canister ID used in the actor instantiation matches the deployed backend canister, that the host/agent configuration is correct for the deployment environment, and that the `getQuotes` query is reachable.",
       "reqIds": [
         "REQ-1"
       ],
-      "version": 1
+      "status": "pending"
     },
     {
-      "id": "feature-in-quotespage-tsx-when-an-error-occurs-while-retrying-keep-showing-the-loading-skeleton-state-instead-of-immediately-switching-to-the-error-ui-so-the-user-on-mobile-sees-a-loading-experience-rather-than-an-error-screen-during-transient-failures",
-      "title": "In `QuotesPage.tsx`, when an error occurs while retrying, keep showing the loading skeleton state instead of immediately switching to the error UI, so the user on mobile sees a loading experience rather than an error screen during transient failures.",
+      "id": "AR-2",
+      "summary": "Ensure the frontend agent (in `useActor.ts`) is initialized with the correct IC host URL for the deployed environment. If the host is hardcoded to `localhost` or a development URL, update it to dynamically select the correct host based on whether the app is running locally or in production (e.g., using `window.location.origin` or an environment variable).",
       "reqIds": [
         "REQ-2"
       ],
-      "version": 1
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add two new quotes to the app: 'If teachers teach, why don't doctors doct?' and 'If time flies, where does it land?'",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add the following two quotes to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`: 'If teachers teach, why don't doctors doct?' and 'If time flies, where does it land?'",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add the quote 'If you wait faster, are you technically arriving sooner?' to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add the quote 'If you wait faster, are you technically arriving sooner?' to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
     }
   ],
-  "new_feature_requests": [],
-  "gameProjectType": "none",
-  "projectName": "Auto-retry quote loading on mobile failure",
+  "projectName": "Fix backend connectivity — app cannot reach the server on any platform",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

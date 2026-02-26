@@ -1,46 +1,33 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-26T13:46:42.044Z",
+  "generatedAt": "2026-02-26T14:13:12.601Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 1,
+    "implemented": 0,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Update the `useGetQuotes` hook to automatically retry fetching quotes when the request fails, using React Query's retry configuration with multiple retry attempts and exponential backoff, so that intermittent mobile loading failures resolve without user intervention.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/hooks/useQueries.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/hooks/useQueries.ts"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "In `QuotesPage.tsx`, when an error occurs while retrying, keep showing the loading skeleton state instead of immediately switching to the error UI, so the user on mobile sees a loading experience rather than an error screen during transient failures.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/QuotesPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/QuotesPage.tsx"
-        ]
+        "id": "REQ-4",
+        "summary": "Add the quote 'If you wait faster, are you technically arriving sooner?' to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/pages/QuotesPage.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

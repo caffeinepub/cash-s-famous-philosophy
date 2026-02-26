@@ -1,10 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Automatically retry failed quote fetches on mobile so transient network failures resolve without user intervention.
+**Goal:** Add a new quote to the hardcoded quotes list in the backend.
 
 **Planned changes:**
-- Update the `useGetQuotes` hook to retry failed requests at least 3 times using exponential backoff via React Query's retry configuration
-- Update `QuotesPage.tsx` to keep showing the loading skeleton while retries are in progress, only displaying the error UI after all retry attempts are exhausted
+- Add the quote "If you wait faster, are you technically arriving sooner?" to the quotes array in `backend/main.mo`'s `getQuotes` query.
 
-**User-visible outcome:** On mobile, if quotes fail to load initially, the app silently retries in the background while showing a loading skeleton. The error screen only appears if all retries fail, eliminating most intermittent loading failures without any user action.
+**User-visible outcome:** The new quote appears alongside all existing quotes when the application fetches quotes from the backend.

@@ -1,56 +1,34 @@
 {
   "kind": "build_request",
-  "title": "Auto-retry quote loading on mobile failure",
+  "title": "Add new quote to backend",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Update the `useGetQuotes` hook to automatically retry fetching quotes when the request fails, using React Query's retry configuration with multiple retry attempts and exponential backoff, so that intermittent mobile loading failures resolve without user intervention.",
-      "target": "frontend",
+      "id": "REQ-4",
+      "text": "Add the quote 'If you wait faster, are you technically arriving sooner?' to the hardcoded quotes list in the backend `getQuotes` query in `backend/main.mo`.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-6"
+          "msg-recent"
         ],
         "quotes": [
-          "Keep retrying"
+          "Now add \"If you wait faster, are you technically arriving sooner?\""
         ]
       },
       "acceptanceCriteria": [
-        "When the initial quote fetch fails, the hook automatically retries at least 3 times before giving up",
-        "Retries use a backoff strategy (e.g., increasing delay between attempts)",
-        "The loading/skeleton state remains visible during retry attempts rather than showing the error screen",
-        "The 'wisdom got lost in thought' error screen is only shown after all retries are exhausted",
-        "On mobile, if quotes fail on first load but succeed on a subsequent retry, quotes display normally without user interaction"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "In `QuotesPage.tsx`, when an error occurs while retrying, keep showing the loading skeleton state instead of immediately switching to the error UI, so the user on mobile sees a loading experience rather than an error screen during transient failures.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-6"
-        ],
-        "quotes": [
-          "Keep retrying",
-          "Mobile"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The skeleton loading UI is shown while retries are in progress",
-        "The error UI ('wisdom got lost in thought') is only displayed once all retry attempts have been exhausted",
-        "No regression on desktop — behavior remains the same for successful loads"
+        "The quote 'If you wait faster, are you technically arriving sooner?' appears in the array returned by the `getQuotes` query.",
+        "All previously existing quotes remain present and unchanged.",
+        "The backend compiles and deploys without errors."
       ]
     }
   ],
   "constraints": [
-    "Do not modify frontend/src/hooks/useActor.ts or frontend/src/main.tsx",
-    "Do not change the backend quote data or API"
+    "Do not remove or modify any existing quotes.",
+    "Only modify backend/main.mo."
   ],
   "nonGoals": [
-    "Fixing permanent/non-intermittent backend failures",
-    "Adding a manual retry button for users",
-    "Changing the visual design or quote cycling behavior"
+    "Frontend changes.",
+    "Adding any other new quotes beyond the one specified."
   ],
   "imageRequirements": {
     "required": [],
